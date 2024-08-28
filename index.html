@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="/images/logo.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Random Password Generator</title>
+    <link rel="stylesheet" href="/style.css" />
+
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <div class="main">
+      <h1>Generate a <br /><span>Random Password</span></h1>
+      <fieldset class="grid-features">
+        <legend>Choose your password features:</legend>
+
+        <div>
+          <input
+            type="checkbox"
+            id="Special characters"
+            name="Special characters"
+          />
+          <label for="Special characters">Special characters</label>
+          <input
+            type="checkbox"
+            id="Uppercase Letters"
+            name="Uppercase Letters"
+            checked
+          />
+          <label for="Uppercase Letters">Uppercase Letters</label>
+        </div>
+
+        <div>
+            <input type="range" id="length" name="Length" min="8" max="16" checked />
+            <label for="Length">Length</label>
+        </div>
+      </fieldset>
+      <div class="display">
+        <input type="text" id="password" placeholder="Password" />
+        <img src="images/copy.png" />
+      </div>
+      <button class="btn-generate" onclick="generateRandomPassword()">
+        <img src="images/generate.png" /> Generate Password
+      </button>
+    </div>
+  </body>
+</html>
