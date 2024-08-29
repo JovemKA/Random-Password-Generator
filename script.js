@@ -1,15 +1,24 @@
 const passwordBox = document.getElementById("password");
+const specialCharacters = document.getElementById("special-characters");
+const uppercaseLetters = document.getElementById("uppercase-letters");
 const lengthBox = document.getElementById("length");
-const length = lengthBox.value;
 
 function generateRandomPassword() {
+    const length = parseInt(lengthBox.value);
+
     const getRandomChar = () => {
         const charSets = [
             [48, 57], // Numbers (0-9)
-            [65, 90], // Uppercase Letters (A-Z)
             [97, 122], // Lowercase (a-z)
-            [33, 47], // Special characters (!-/)
         ];
+
+        if (uppercaseLetters.checked) {
+            charSets.push([65, 90]); // Uppercase Letters (A-Z)
+        }
+
+        if (specialCharacters.checked) {
+            charSets.push([33, 47]); // Special characters (!-/)
+        }
 
         const charSet = charSets[Math.floor(Math.random() * charSets.length)];
 
@@ -25,6 +34,20 @@ function generateRandomPassword() {
     }
 
     passwordBox.value = password;
+}
+
+function copyPassword() {
+    const passwordInput = document.getElementById("password");
+    const passwordText = passwordInput.value;
+
+    navigator.clipboard.writeText(passwordText)
+        .then(() => {
+            console.log("Password copied to clipboard!");
+            // Optionally display a success message to the user (see below)
+        })
+        .catch(() => {
+            console.error("Failed to copy password!");
+        });
 }
 
 // function function generateRandomPassword() {
